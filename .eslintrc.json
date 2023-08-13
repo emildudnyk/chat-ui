@@ -1,0 +1,71 @@
+{
+  "root": true,
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "prettier",
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+    "plugin:react/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "ecmaVersion": 12,
+    "sourceType": "module",
+    "project": ["./tsconfig.json"]
+  },
+  "plugins": ["tsc", "import", "prettier", "simple-import-sort"],
+  "rules": {
+    "tsc/config": [
+      1,
+      {
+        "configFile": "tsconfig.json"
+      }
+    ],
+    "simple-import-sort/imports": "error",
+    "simple-import-sort/exports": "error",
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
+    "prettier/prettier": "warn",
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "react/jsx-props-no-spreading": "off",
+    "import/prefer-default-export": "off",
+    "no-debugger": "warn",
+    // Possible mutate state value because Redux Toolkit's createReducer and createSlice API uses Immer internally automatically.
+    // https://redux-toolkit.js.org/usage/immer-reducers#redux-toolkit-and-immer
+    "no-param-reassign": ["error", { "props": true, "ignorePropertyModificationsFor": ["state"] }],
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/display-name": "off",
+    "@typescript-eslint/no-duplicate-enum-values": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        "patterns": [
+          "@mui/material/*",
+          "@mui/icons-material/*",
+          "!@mui/material/styles",
+          "!@mui/material/colors"
+        ]
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}
