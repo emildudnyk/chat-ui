@@ -16,7 +16,7 @@ export const useStyles = makeStyles()((theme) => ({
     borderRight: "1px solid #e0e0e0",
   },
   messageArea: {
-    height: "calc(100% - 100px)",
+    height: "calc(90vh - 100px)",
     overflowY: "auto",
   },
 }));

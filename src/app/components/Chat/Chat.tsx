@@ -15,10 +15,10 @@ import {
 } from "@mui/material";
 import { useStyles } from "./Chat.styles";
 import {
-  Send as SendIcon,
-  Logout as LogOutIcon,
-  Login as LoginIcon,
   Circle as CircleIcon,
+  Login as LoginIcon,
+  Logout as LogOutIcon,
+  Send as SendIcon,
 } from "@mui/icons-material";
 import { ModalSetName } from "../ModalSetName";
 import { Message, MessageType } from "app/components/Chat/components";
@@ -56,19 +56,19 @@ export const Chat = () => {
 
   const onSocketMessage = useCallback((dataStr: string) => {
     const data = JSON.parse(dataStr);
+
     if (data.members) {
       setMembers(data.members);
-    } else if (data.publicMessage) {
+    }
+
+    if (data.publicMessage) {
       setChatRows((oldArray) => [
         ...oldArray,
         { ...data.publicMessage, type: MessageType.Public },
       ]);
-    } else if (data.privateMessage) {
-      setChatRows((oldArray) => [
-        ...oldArray,
-        { ...data.privateMessage, type: MessageType.Private },
-      ]);
-    } else if (data.systemMessage) {
+    }
+
+    if (data.systemMessage) {
       setChatRows((oldArray) => [
         ...oldArray,
         { message: data.systemMessage, type: MessageType.System },

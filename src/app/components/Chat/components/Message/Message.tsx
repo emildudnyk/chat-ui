@@ -8,7 +8,6 @@ import {
 import React from "react";
 
 export enum MessageType {
-  Private = "private",
   Public = "Public",
   System = "system",
 }
