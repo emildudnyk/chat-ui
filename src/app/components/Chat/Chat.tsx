@@ -94,17 +94,6 @@ export const Chat = () => {
     };
   }, []);
 
-  const onSendPrivateMessage = useCallback((to: string) => {
-    const message = prompt("Enter private message for " + to);
-    socket.current?.send(
-      JSON.stringify({
-        action: "sendPrivate",
-        message,
-        to,
-      }),
-    );
-  }, []);
-
   const onSendPublicMessage = useCallback(() => {
     socket.current?.send(
       JSON.stringify({
